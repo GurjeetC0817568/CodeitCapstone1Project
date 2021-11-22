@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView navigationView = findViewById(R.id.nav);
-        navigationView.setOnNavigationItemSelectedListener(nav);
+        navigationView.setOnItemSelectedListener(nav);
       //TODO: either sell or profile part add here
         if (savedInstanceState == null) {
             navigationView.setSelectedItemId(R.id.profile);
@@ -32,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener nav =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private BottomNavigationView.OnItemSelectedListener nav =
+            new BottomNavigationView.OnItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment fragment = null;
@@ -48,13 +49,11 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.profile:
                               fragment = new ProfileFragment();
                             break;
-
-
                         case R.id.chat:
-                            fragment = new ProfileFragment();//  fragment = new Chat();// for now
+                            fragment = new ChatFragment();
                             break;
                         case R.id.call:
-                            fragment = new ProfileFragment();//  fragment = new Call();// for now to not crash the app
+                            fragment = new ProfileFragment();//fragment = new Call();// for now to not crash the app
                             break;
 
                     }

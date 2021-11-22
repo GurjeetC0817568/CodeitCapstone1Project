@@ -36,8 +36,8 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener stateListener;
     private FirebaseUser currentUser;
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference collectionReference = db.collection("Users");
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();//testing
+    private CollectionReference collectionReference = db.collection("Users");//testing: use it later
     private DatabaseReference databaseReference;
 
 
@@ -67,6 +67,8 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //TODO: may use it later in other sections
         stateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -78,6 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         };
+
         rRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,8 +133,8 @@ public class RegisterActivity extends AppCompatActivity {
                                         Toast.makeText(RegisterActivity.this, "Data save to firebase", Toast.LENGTH_SHORT).show();
                                     }
                                 });
-                                //             databaseReference.child("Register").child(currentUserID).setValue("");
-                                //here is the value in rt database
+                                //databaseReference.child("Register").child(currentUserID).setValue("");
+                                //here is the value in realtime database
 
                                 // sendUserToMainActivity();
                                 Toast.makeText(RegisterActivity.this, "Account create Successfully" +
@@ -142,7 +145,6 @@ public class RegisterActivity extends AppCompatActivity {
                                 //  intent.putExtra("name",na);
                                 //  intent.putExtra("User ID",UserID);
                                 //  intent.putExtra("UserEmail",email);
-
                                 startActivity(intent);
                             } else {
                                 String message = task.getException().toString();

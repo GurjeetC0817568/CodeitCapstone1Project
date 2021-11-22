@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void rememberMe(){
-        preferences = getSharedPreferences("mypref",MODE_PRIVATE);
+        preferences = getSharedPreferences("mypref",MODE_PRIVATE);//may use boolean
         String log_checkbox = preferences.getString("remember", "");
         if(log_checkbox.equals("true"))
         {

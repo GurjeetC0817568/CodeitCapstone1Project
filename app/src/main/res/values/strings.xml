@@ -1,5 +1,24 @@
 <resources>
     <string name="app_name">CodeitCapstone1Project</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="used">Used</string>
+    <string name="next">Next</string>
+    <string name="logout">Logout</string>
+    <string name="name">Name</string>
+    <string name="condition">Condition</string>
+    <string name="time">Time</string>
+    <string name="enter_your_number">Enter Your Phone Number</string>
+    <string name="price_of_product">Product Price</string>
+    <string name="post">Product</string>
+    <string name="phone">Phone</string>
+    <string name="price">Price</string>
+    <string name="username">UserName</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="chat">Chat</string>
+    <string name="search">Search</string>
+    <string name="click_for_location">Click for location</string>
+    <string name="call">Call</string>
+    <string name="calling">Calling..</string>
+    <string name="ringing">Ringing</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
