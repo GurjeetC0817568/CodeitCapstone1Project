@@ -12,26 +12,24 @@
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/drawable-v24/rbusedunchehcked.xml" value="0.14635416666666667" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/drawable/background.xml" value="0.14635416666666667" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/drawable/sendreceive.xml" value="0.14635416666666667" />
-        <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/activity_login.xml" value="0.14855072463768115" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/activity_register.xml" value="0.2" />
-        <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/fragment_chat.xml" value="0.245018115942029" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/fragment_home.xml" value="0.14855072463768115" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/fragment_profile.xml" value="0.245018115942029" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/fragment_sell.xml" value="0.245018115942029" />
-        <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/row_user.xml" value="0.245018115942029" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/menu/bottombarmenu.xml" value="0.13020833333333334" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/menu/logout.xml" value="0.13020833333333334" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/menu/search.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/jiveshmakkar007/AndroidStudioProjects/CodeitCapstone1Project/app/src/main/res/layout/message_recieve_row.xml" value="0.11548913043478261" />
-        <entry key="..\:/Users/jiveshmakkar007/AndroidStudioProjects/CodeitCapstone1Project/app/src/main/res/layout/message_send_row.xml" value="0.2384428223844282" />
-        <entry key="..\:/Users/jiveshmakkar007/AndroidStudioProjects/CodeitCapstone1Project/app/src/main/res/layout/row_user.xml" value="0.11548913043478261" />
-        <entry key="app/src/main/res/layout/custom_messages_layout.xml" value="0.1403985507246377" />
-        <entry key="app/src/main/res/layout/customtollbarforusers.xml" value="0.1403985507246377" />
-        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.125" />
-        <entry key="app/src/main/res/layout/list_item.xml" value="0.1403985507246377" />
-        <entry key="app/src/main/res/layout/postitem.xml" value="0.125" />
-        <entry key="app/src/main/res/layout/rowcalluser.xml" value="0.1403985507246377" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/addnumberlayout.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/call.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/callscreen.xml" value="0.15628166160081053" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.46083252320544077" />
+        <entry key="app/src/main/res/layout/fragment_sell.xml" value="0.15070921985815602" />
       </map>
     </option>
   </component>
