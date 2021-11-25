@@ -1,64 +1,168 @@
 package com.gurjeet.codeitcapstone1project;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
+import android.widget.SearchView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ChatFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.gurjeet.codeitcapstone1project.adapter.UserAdapter;
+import com.gurjeet.codeitcapstone1project.model.UserRegister;
+
+import java.util.ArrayList;
+
+
 public class ChatFragment extends Fragment {
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
+    DatabaseReference reference;
+    UserAdapter adapter;
+    RecyclerView recycleruser;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private ArrayList<UserRegister> UserList;
+    private SearchView searchView;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public ChatFragment() {
-        // Required empty public constructor
-    }
+    final DatabaseReference nm= FirebaseDatabase.getInstance().getReference("Register");
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ChatFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ChatFragment newInstance(String param1, String param2) {
-        ChatFragment fragment = new ChatFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+
+//    @Override
+//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        inflater.inflate( R.menu.search, menu);
+//        System.out.println( "inflating menu");
+//
+//    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull final Menu menu, @NonNull MenuInflater inflater) {
+
+        inflater.inflate(R.menu.search,menu);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) menu.findItem(R.id.searchh)
+                .getActionView();
+        if (null != searchView) {
+            searchView.setSearchableInfo(searchManager
+                    .getSearchableInfo(getActivity().getComponentName()));
+            searchView.setIconifiedByDefault(false);
+        }
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // collapse the view ?
+                menu.findItem(R.id.searchh).collapseActionView();
+                Log.e("queryText",query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // search goes here !!
+                // adapter.getFilter().filter(query);
+                //adapter.getFilter
+                Log.e("queryText",newText);
+                return false;
+            }
+
+
+        });
+        super.onCreateOptionsMenu(menu, inflater);
+
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //SearchView searchView;
+        switch (item.getItemId()) {
+
+            case R.id.searchh:
+
+
+
+                return true;
+
         }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chat, container, false);
+
+     //   ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("ChatFragment");
+
+
+        View vie = inflater.inflate(R.layout.fragment_chat,container,false);
+        recycleruser = vie.findViewById(R.id.userRecycler);
+
+        UserList = new ArrayList<>();
+        recycleruser.setLayoutManager(new LinearLayoutManager(vie.getContext()));
+        firebaseAuth  = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        adapter=new UserAdapter(UserList,getActivity());
+        getuser();
+        return vie;
+    }
+    private void getuser() {
+        nm.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    for (DataSnapshot npsnapshot : snapshot.getChildren()) {
+
+                        UserRegister l = npsnapshot.getValue(UserRegister.class);
+                        String name = l.getName();
+                        Log.d("nam", "onDataChange: "+name);
+                        if(!user.getUid().equals(l.getId())){
+                            UserList.add(l);
+                        }
+                    }
+
+
+                    adapter=new UserAdapter(UserList,getActivity());
+                    recycleruser.setAdapter(adapter);
+                    LayoutAnimationController animationController =
+                            AnimationUtils.loadLayoutAnimation(getContext(),R.anim.layout_slid_right);
+                    recycleruser.setLayoutAnimation(animationController);
+                    recycleruser.getAdapter().notifyDataSetChanged();
+                    recycleruser.scheduleLayoutAnimation();
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(), "Error"+error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

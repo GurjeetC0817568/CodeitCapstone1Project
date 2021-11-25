@@ -1,35 +1,37 @@
 package com.gurjeet.codeitcapstone1project.adapter;
 
-        import android.content.Context;
-        import android.content.Intent;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.ImageView;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-        import androidx.annotation.NonNull;
-        import androidx.cardview.widget.CardView;
-        import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
-        import com.gurjeet.codeitcapstone1project.R;
-        import com.gurjeet.codeitcapstone1project.model.UserRegister;
+import java.util.ArrayList;
+import java.util.List;
 
-        import java.util.ArrayList;
-        import java.util.List;
+import com.gurjeet.codeitcapstone1project.Message;
+import com.gurjeet.codeitcapstone1project.R;
+import com.gurjeet.codeitcapstone1project.model.UserRegister;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     private ArrayList<UserRegister> UserList;
     private List<UserRegister> names;
     private Context context;
 
+    public UserAdapter() {
+    }
 
     public UserAdapter(ArrayList<UserRegister> userList, Context context) {
         UserList = userList;
         this.context = context;
     }
-    public UserAdapter() {}
 
 
     @NonNull
@@ -42,25 +44,29 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        UserRegister usr = UserList.get(position);
-        holder.textView.setText(usr.getName());
+        UserRegister MO = UserList.get(position);
+
+        //userimage...........
+        //User name........
+        holder.textView.setText(MO.getName());
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                UserRegister usr = UserList.get(position);
+                UserRegister MO = UserList.get(position);
 
-                final String ns = usr.getId();
-                String  username = usr.getName();
+                final String ns = MO.getId();
+                String  username = MO.getName();
                 Toast.makeText(context, ""+ns, Toast.LENGTH_SHORT).show();
                 Toast.makeText(context, "Username = "+username, Toast.LENGTH_LONG).show();
 
-                /* //to add any intent
                 Intent intennt = new Intent(v.getContext(), Message.class);
                 intennt.putExtra("id",ns);
                 intennt.putExtra("title",username);
                 context.startActivity(intennt);
-                */
+
             }
         });
 
@@ -86,6 +92,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                         }
                         filteredNameList = filteredList;
                     }
+
                 }
                 FilterResults results = new FilterResults();
                 results.values = filteredNameList;
@@ -109,6 +116,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             imageView = itemView.findViewById(R.id.imageuser);
             textView = itemView.findViewById(R.id.textuser);
             cardView =itemView.findViewById(R.id.cardview);
+
         }
     }
 }

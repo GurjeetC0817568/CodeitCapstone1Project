@@ -1,7 +1,9 @@
 package com.gurjeet.codeitcapstone1project;
 
+import androidx.fragment.app.Fragment;
+
 public class CallFragment extends Fragment {
-    FirebaseAuth firebaseAuth;
+ /*   FirebaseAuth firebaseAuth;
     FirebaseUser user;
     DatabaseReference reference;
     CallAdapter adapter;
@@ -69,5 +71,5 @@ public class CallFragment extends Fragment {
             }
         });
     }
-
+*/
 }

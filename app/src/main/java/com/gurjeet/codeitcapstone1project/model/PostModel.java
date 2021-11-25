@@ -1,5 +1,10 @@
 package com.gurjeet.codeitcapstone1project.model;
 
+//import java.security.Timestamp;
+import android.app.Application;
+import com.google.firebase.Timestamp;
+
+
 public class PostModel{
     private String name;
     private String Userid;
