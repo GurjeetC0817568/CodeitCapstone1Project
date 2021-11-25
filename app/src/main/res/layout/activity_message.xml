@@ -39,7 +39,7 @@
         android:layout_height="40dp" />
 
 
-    <EditText
+    <hani.momanii.supernova_emoji_library.Helper.EmojiconEditText
         android:id="@+id/emojicon_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

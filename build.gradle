@@ -4,7 +4,7 @@ buildscript {
         google()
         mavenCentral()
        //added for emoji keyboard
-        maven {url "https://jitpack.io"}
+      //  maven {url "https://jitpack.io"}
        // maven {url "https://dl.bintray.com/hani-momanii/maven"}
         flatDir {
             dirs 'libs'
@@ -20,7 +20,6 @@ buildscript {
 
     }
 }
-
 
 
 

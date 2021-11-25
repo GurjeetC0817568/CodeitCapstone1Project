@@ -30,21 +30,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 //import hani.momanii.supernova_emoji_library.Actions.EmojIconActions;
-//import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
+import hani.momanii.supernova_emoji_library.Actions.EmojIconActions;
+import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
 
 //https://codingshiksha.com/how-to-integrate-emojis-keyboard-in-your-android-app
 
 
 
 public class Message extends AppCompatActivity {
-    RelativeLayout activity_message;
-   // EmojiconEditText emojiconEditText;
+    View v;//RelativeLayout activity_message;//View V
+   EmojiconEditText emojiconEditText;
 
-    EditText emojiconEditText;
+  //  EditText emojiconEditText;
     private String rec_name;
     private String sen_name;
     ImageView emojiButton,submitButton;
-   // EmojIconActions emojIconActions;
+    EmojIconActions emojIconActions;
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
 
@@ -68,21 +69,21 @@ public class Message extends AppCompatActivity {
         String title =intent.getExtras().getString("title");
        // ((AppCompatActivity)Message.this).getSupportActionBar().setTitle(title);
 
-        activity_message = (RelativeLayout)findViewById(R.id.message_activity);
+        v = findViewById(R.id.message_activity);//(RelativeLayout)findViewById(R.id.message_activity);
         listOfMessage = (RecyclerView) findViewById(R.id.list_of_message);
         layoutManager = new LinearLayoutManager(this);
         listOfMessage.setHasFixedSize(true);
         listOfMessage.setLayoutManager(layoutManager);
         emojiButton = (ImageView)findViewById(R.id.emoji_button);
         submitButton = (ImageView)findViewById(R.id.submit_button);
-        emojiconEditText = findViewById(R.id.emojicon_edit_text);
-       /* emojiconEditText = (EmojiconEditText)findViewById(R.id.emojicon_edit_text);
-       // emojIconActions = new EmojIconActions(getApplicationContext(),activity_message,emojiButton,emojiconEditText);
-        EmojIconActions emojIcon = new EmojIconActions(getApplicationContext(),activity_message,emojiconEditText,emojiButton);
-       // emojIcon.ShowEmojIcon();//
+       // emojiconEditText = findViewById(R.id.emojicon_edit_text);
+       emojiconEditText = (EmojiconEditText)findViewById(R.id.emojicon_edit_text);
+        emojIconActions = new EmojIconActions(getApplicationContext(),v,emojiconEditText,emojiButton);
+       // EmojIconActions emojIcon = new EmojIconActions(getApplicationContext(),v,emojiconEditText,emojiButton);
+        emojIconActions.ShowEmojIcon();//
         //emojIconActions.ShowEmojicon();
 
-        */
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
