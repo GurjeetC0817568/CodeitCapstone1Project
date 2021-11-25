@@ -17,5 +17,7 @@
         <color name="colorBlack">#000000</color>
         <color name="colorWhite">#FFFFFF</color>
         <color name="colorRED">#A86060</color>
+        <color name="partialBackground">#B2101210</color>
+
 
 </resources>
