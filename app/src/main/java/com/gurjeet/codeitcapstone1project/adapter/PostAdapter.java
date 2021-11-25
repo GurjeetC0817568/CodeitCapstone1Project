@@ -63,7 +63,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         String imageUrl;
         holder.tvname.setText(L.getName());
         holder.TPrice.setText(L.getPrice());
-        holder.Tphone.setText(L.getNumber());
+        holder.Tphone.setText(L.getDetails());
         holder.tvCondition.setText(L.getCondition());
        // holder.tvTime.setText(L.getTimeAdd().toString());
         holder.tvTime.setText("Testing it");
@@ -82,10 +82,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 //                context.startActivity(callIntent);
                 //   openWhatsap(L.getNumber());
                 // this click leads from click number to whatsapp
+                //TODO: will check it later
                 boolean installed = appInstalledOrNot("com.whatsapp");
                 if (installed){
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+"+92"+L.getNumber()));
+                    intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+"+1"+L.getNumber()));
                     context.startActivity(intent);
                 }else {
                     Toast.makeText(context, "Whats app not installed on your device", Toast.LENGTH_SHORT).show();

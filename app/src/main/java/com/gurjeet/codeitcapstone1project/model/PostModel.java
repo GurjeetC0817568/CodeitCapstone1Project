@@ -9,6 +9,7 @@ public class PostModel{
     private String name;
     private String Userid;
     private String price;
+    private String details;
     private String number;
     private String condition;
     private String imageURi;
@@ -17,12 +18,13 @@ public class PostModel{
 
     public PostModel() {}
 
-    public PostModel(String name,String Userid,String price,String number, String condition, String imageURi, Timestamp timeAdd) {
+    public PostModel(String name,String Userid,String price,String details,String number, String condition, String imageURi, Timestamp timeAdd) {
         this.name = name;
         this.condition = condition;
         this.imageURi = imageURi;
         this.timeAdd = timeAdd;
         this.price =price;
+        this.details=details;
         this.number=number;
         this.Userid=Userid;
     }
@@ -41,7 +43,13 @@ public class PostModel{
     public void setNumber(String number) {
         this.number = number;
     }
+    public String getDetails() {
+        return details;
+    }
 
+    public void setDetails(String number) {
+        this.details = details;
+    }
 
     public String getUserid() {
         return Userid;

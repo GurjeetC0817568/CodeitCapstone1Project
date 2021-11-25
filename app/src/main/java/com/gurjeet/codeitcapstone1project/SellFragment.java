@@ -66,11 +66,11 @@ public class SellFragment extends Fragment {
     private static final int PICK_IMAGE  = 1;
     private static final int PICK_MULTIPLE_IMAGE  = 2;
     LocationManager locationManager;
-    TextInputLayout productname, location,numbe,pric;
+    TextInputLayout productname, location,detail,pric;
     RadioGroup radioGroup;
     Bitmap bitmaps;
     int Postion;
-    String ne,us,price,number,nam,n,p;
+    String ne,us,price,details,nam,n,p;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -135,8 +135,8 @@ public class SellFragment extends Fragment {
         rbtnused = view.findViewById(R.id.rbtnused);
         radioGroup = view.findViewById(R.id.radioG);
 
-        numbe = view.findViewById(R.id.NumberDialog);
-        pric  = view.findViewById(R.id.PriceDialog);
+        detail = view.findViewById(R.id.details);
+        pric  = view.findViewById(R.id.price);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -179,7 +179,7 @@ public class SellFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                number = numbe.getEditText().getText().toString();
+                details = detail.getEditText().getText().toString();
                 price = pric.getEditText().getText().toString();
                 nam = productname.getEditText().getText().toString();
                 final String cm = ne;
@@ -204,7 +204,8 @@ public class SellFragment extends Fragment {
                                             }else{
                                                 mod.setCondition(us);
                                             }
-                                            mod.setNumber(number);
+                                            mod.setDetails(details);
+                                            mod.setNumber(user.getPhoneNumber());
                                             //   mod.setPrice(Integer.parseInt(price));
                                             try{
                                                 mod.setPrice(price);
@@ -216,16 +217,12 @@ public class SellFragment extends Fragment {
                                             collectionReference.add(mod).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                                 @Override
                                                 public void onSuccess(DocumentReference documentReference) {
-                                                    Toast.makeText(getActivity(), "Data inserted", Toast.LENGTH_SHORT).show();
-                                                    Log.d("DocReference gk:",documentReference.toString());
-                                                    Toast.makeText(getActivity(), "name " + number + price ,  Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(getActivity(), "Successfully Added!", Toast.LENGTH_SHORT).show();
+                                                  //  Log.d("DocReference gk:",documentReference.toString());
                                                     HomeFragment home = new HomeFragment();
                                                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
                                                     transaction.replace(R.id.fragmentMainPart,home);
                                                     transaction.commit();
-
-                                                    // Intent inten = new Intent(getActivity(),Home.class);
-                                                    //startActivity(inten);
 
                                                 }
                                             }).addOnFailureListener(new OnFailureListener() {
