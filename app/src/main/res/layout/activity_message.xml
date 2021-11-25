@@ -22,12 +22,12 @@
 
     <ImageView
         android:id="@+id/emoji_button"
-        android:padding="4dp"
-        android:src="@mipmap/smiley"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
         android:layout_width="40dp"
-        android:layout_height="40dp" />
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:padding="4dp"
+        android:src="@mipmap/smiley" />
 
     <ImageView
         android:id="@+id/submit_button"
@@ -41,13 +41,14 @@
 
     <EditText
         android:id="@+id/emojicon_edit_text"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/emoji_button"
-        android:layout_toLeftOf="@+id/submit_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/submit_button"
+        android:layout_toRightOf="@+id/emoji_button"
+        android:background="#B2101210"
+        android:textColor="#FF5722"
+        android:textColorHint="#F44336" />
 
 
     <androidx.recyclerview.widget.RecyclerView
