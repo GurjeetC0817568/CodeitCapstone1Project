@@ -28,8 +28,8 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.gurjeet.codeitcapstone1project.R;
 import com.gurjeet.codeitcapstone1project.model.PostModel;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Transformation;
+//import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Transformation;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -62,18 +62,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         final PostModel L = postList.get(position);
         String imageUrl;
         holder.tvname.setText(L.getName());
-        holder.TPrice.setText(L.getPrice());
+        holder.TPrice.setText("Price: $"+L.getPrice());
+        //holder.Tphone.setText(L.getNumber());
+        holder.tvCondition.setText("Condition: "+L.getCondition());
+       holder.tvTime.setText("Posted On: "+L.getTimeAdd().toDate().toString());
+       // holder.tvTime.setText("Testing it");
         holder.Tphone.setText(L.getDetails());
-        holder.tvCondition.setText(L.getCondition());
-       // holder.tvTime.setText(L.getTimeAdd().toString());
-        holder.tvTime.setText("Testing it");
 
-   /*     String timeAgo = (String) DateUtils
-                .getRelativeTimeSpanString(L
-                        .getTimeAdd()
-                        .getSeconds() * 1000);
-        holder.tvTime.setText(timeAgo);*/
-        holder.Tphone.setOnClickListener(new View.OnClickListener() {
+   /*
+    //TODO: will enable it later
+    holder.Tphone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // lead to phone deal from post ...
@@ -86,7 +84,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 boolean installed = appInstalledOrNot("com.whatsapp");
                 if (installed){
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+"+1"+L.getNumber()));
+                    intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+L.getNumber()));
                     context.startActivity(intent);
                 }else {
                     Toast.makeText(context, "Whats app not installed on your device", Toast.LENGTH_SHORT).show();
@@ -94,7 +92,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 }
 
             }
-        });
+        });*/
 
         imageUrl= L.getImageURi();
 //        Picasso.get()

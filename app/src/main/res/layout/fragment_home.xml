@@ -8,9 +8,15 @@
     android:background="@drawable/backgroundimg"
     tools:context=".HomeFragment">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/productstop"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/postRecycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp" />
 </FrameLayout>

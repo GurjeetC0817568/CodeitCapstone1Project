@@ -36,6 +36,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -43,6 +45,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.gurjeet.codeitcapstone1project.model.PostModel;
+import com.gurjeet.codeitcapstone1project.model.UserRegister;
 import com.squareup.picasso.Picasso;
 
 import java.io.FileNotFoundException;
@@ -123,6 +126,9 @@ public class SellFragment extends Fragment {
         storageReference = FirebaseStorage.getInstance().getReference();
         firebaseAuth =FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
+
+      //  Toast.makeText(getActivity(), "name " + user.getUid() + "-phone:" + user.getDisplayName() ,  Toast.LENGTH_LONG).show();
+
         View view = inflater.inflate(R.layout.fragment_sell, container, false);
         // spinner = view.findViewById(R.id.spinner);
      //   location = view.findViewById(R.id.location);
@@ -205,7 +211,9 @@ public class SellFragment extends Fragment {
                                                 mod.setCondition(us);
                                             }
                                             mod.setDetails(details);
-                                            mod.setNumber(user.getPhoneNumber());
+                                          //  mod.setNumber(mod.getNumber());//mod.setNumber(user.getPhoneNumber());
+                                          //  UserRegister l = npsnapshot.getValue(UserRegister.class);
+                                          //  String name = l.getName();
                                             //   mod.setPrice(Integer.parseInt(price));
                                             try{
                                                 mod.setPrice(price);
@@ -219,6 +227,7 @@ public class SellFragment extends Fragment {
                                                 public void onSuccess(DocumentReference documentReference) {
                                                     Toast.makeText(getActivity(), "Successfully Added!", Toast.LENGTH_SHORT).show();
                                                   //  Log.d("DocReference gk:",documentReference.toString());
+                                                   // Toast.makeText(getActivity(), "name " + mod.getNumber()+ ">price:" + price ,  Toast.LENGTH_SHORT).show();
                                                     HomeFragment home = new HomeFragment();
                                                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
                                                     transaction.replace(R.id.fragmentMainPart,home);
