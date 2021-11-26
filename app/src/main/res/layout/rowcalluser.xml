@@ -6,7 +6,9 @@
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Chat">
+    tools:context=".CallFragment">
+
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ccardview"
@@ -15,7 +17,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:cardBackgroundColor="@color/colorAccent"
+        app:cardBackgroundColor="@color/partialBackground"
+
         android:layout_margin="10dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,8 +32,9 @@
 
             <ImageView
                 android:id="@+id/cimageuser"
-                android:layout_width="133dp"
-                android:layout_height="137dp"
+                android:layout_width="59dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="3dp"
                 android:src="@drawable/phone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,27 +42,27 @@
 
             <TextView
                 android:id="@+id/ctextuser"
-                android:layout_width="192dp"
-                android:layout_height="44dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="9dp"
                 android:hint="@string/username"
-                android:textColor="@color/colorBlack"
-                android:textSize="22dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.609"
-                app:layout_constraintStart_toEndOf="@+id/imageuser"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.23" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/cimageuser"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/cbutton"
                 android:layout_width="119dp"
                 android:layout_height="48dp"
-                android:hint="@string/call"
-                android:textColor="@color/colorBlack"
-                android:textSize="20sp"
+                android:text="Call"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/colorBlack"
+                android:textAlignment="center"
+                android:textColorHint="@color/colorPrimary"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/ctextuser"

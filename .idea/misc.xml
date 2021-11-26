@@ -19,15 +19,17 @@
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/addnumberlayout.xml" value="0.15364583333333334" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/custom_messages_layout.xml" value="0.20153985507246377" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/customtollbarforusers.xml" value="0.19655797101449277" />
+        <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/fragment_call.xml" value="0.1266284523189161" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/fragment_chat.xml" value="0.152" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/fragment_home.xml" value="0.14855072463768115" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/fragment_profile.xml" value="0.245018115942029" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/fragment_sell.xml" value="0.264" />
-        <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/message_recieve_row.xml" value="0.153125" />
+        <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/message_recieve_row.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/message_send_row.xml" value="0.153125" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/post_product_items.xml" value="0.6" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/postitem.xml" value="0.22871376811594202" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/row_user.xml" value="0.245018115942029" />
+        <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/rowcalluser.xml" value="0.536" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/menu/bottombarmenu.xml" value="0.13020833333333334" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/menu/logout.xml" value="0.13020833333333334" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/menu/search.xml" value="0.13020833333333334" />

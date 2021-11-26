@@ -69,6 +69,22 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
        // holder.tvTime.setText("Testing it");
         holder.Tphone.setText(L.getDetails());
 
+
+      /*  holder.Tphone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //String phno="+14169096015";
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:+14169096015"));
+                context.startActivity(callIntent);
+                //Intent i=new Intent(Intent.ACTION_DIAL,Uri.parse(phno));
+                //context.startActivity(i);
+            }
+        });
+        
+       */
+
+
    /*
     //TODO: will enable it later
     holder.Tphone.setOnClickListener(new View.OnClickListener() {

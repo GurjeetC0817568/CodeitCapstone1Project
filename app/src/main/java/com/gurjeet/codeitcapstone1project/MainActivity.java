@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                             fragment = new ChatFragment();
                             break;
                         case R.id.call:
-                            fragment = new ProfileFragment();//fragment = new Call();// for now to not crash the app
+                            fragment = new CallFragment();
                             break;
 
                     }
