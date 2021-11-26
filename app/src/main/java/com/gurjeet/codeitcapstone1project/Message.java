@@ -67,7 +67,7 @@ public class Message extends AppCompatActivity {
         sen_name = mAuth.getCurrentUser().getUid();
         rec_name =intent.getExtras().getString("id");
         String title =intent.getExtras().getString("title");
-       // ((AppCompatActivity)Message.this).getSupportActionBar().setTitle(title);
+       // ((AppCompatActivity)Message.this).getSupportActionBar().setTitle(title);//need to work for this
 
         v = findViewById(R.id.message_activity);//(RelativeLayout)findViewById(R.id.message_activity);
         listOfMessage = (RecyclerView) findViewById(R.id.list_of_message);
@@ -191,10 +191,8 @@ public class Message extends AppCompatActivity {
         // loggedInUserName = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String userEmail=mAuth.getCurrentUser().getEmail();
         // Log.d("Main", "user id: " + loggedInUserName);
-
         //userSpecificAdapter = new userSpecificAdapter(this, ChatMessage.class, R.layout.item_in_message,
         //      FirebaseDatabase.getInstance().getReference());
         //  userSpecificAdapter adapter=new userSpecificAdapter(messagesFromDB,userEmail,Message.this);
-
     }
 }

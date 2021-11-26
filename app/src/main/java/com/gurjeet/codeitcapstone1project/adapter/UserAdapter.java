@@ -1,5 +1,6 @@
 package com.gurjeet.codeitcapstone1project.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -43,7 +44,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         UserRegister MO = UserList.get(position);
 
         //userimage...........
@@ -59,8 +60,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
                 final String ns = MO.getId();
                 String  username = MO.getName();
-                Toast.makeText(context, ""+ns, Toast.LENGTH_SHORT).show();
-                Toast.makeText(context, "Username = "+username, Toast.LENGTH_LONG).show();
+                //Toast.makeText(context, ""+ns, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(context, "Username = "+username, Toast.LENGTH_LONG).show();
 
                 Intent intennt = new Intent(v.getContext(), Message.class);
                 intennt.putExtra("id",ns);

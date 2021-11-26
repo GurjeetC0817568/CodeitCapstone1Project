@@ -44,9 +44,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+
         android:layout_toLeftOf="@+id/submit_button"
         android:layout_toRightOf="@+id/emoji_button"
-        android:background="#B2101210"
+        android:background="#C9101210"
+        android:padding="6dp"
         android:textColor="#FF5722"
         android:textColorHint="#F44336" />
 

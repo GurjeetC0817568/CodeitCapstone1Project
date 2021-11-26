@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,6 +27,11 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.gurjeet.codeitcapstone1project.LoginActivity;
+import com.gurjeet.codeitcapstone1project.MainActivity;
+import com.gurjeet.codeitcapstone1project.ProductActivity;
 import com.gurjeet.codeitcapstone1project.R;
 import com.gurjeet.codeitcapstone1project.model.PostModel;
 //import com.squareup.picasso.Picasso;
@@ -41,6 +47,8 @@ import java.util.*;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private Context context;
     private ArrayList<PostModel> postList;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser user;
 
     public PostAdapter(Context context, ArrayList<PostModel> postList) {
         this.context = context;
@@ -70,19 +78,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.Tphone.setText(L.getDetails());
 
 
-      /*  holder.Tphone.setOnClickListener(new View.OnClickListener() {
+        holder.btnContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //String phno="+14169096015";
-                Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                callIntent.setData(Uri.parse("tel:+14169096015"));
-                context.startActivity(callIntent);
-                //Intent i=new Intent(Intent.ACTION_DIAL,Uri.parse(phno));
-                //context.startActivity(i);
+                firebaseAuth  = FirebaseAuth.getInstance();
+                user = firebaseAuth.getCurrentUser();
+               Intent intent =  new Intent(context, ProductActivity.class);
+               intent.putExtra("userId",user.getUid());
+               context.startActivity(intent);
+
             }
         });
-        
-       */
+
+
 
 
    /*
@@ -172,6 +180,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
         public ImageView PostImage;
         public TextView tvTime,tvCondition,tvname, Tphone,TPrice;
+        Button btnContact;
         public CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
@@ -183,7 +192,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             cardView = itemView.findViewById(R.id.Crview);
             Tphone =itemView.findViewById(R.id.Tvphone);
             TPrice =itemView.findViewById(R.id.TvPrice);
-
+            btnContact =itemView.findViewById(R.id.btnContact);
         }
 //      public ViewHolder(@NonNull View itemView,Context ctx) {
 //            super(itemView);

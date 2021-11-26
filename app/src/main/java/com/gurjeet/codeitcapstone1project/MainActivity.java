@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.profile:
                               fragment = new ProfileFragment();
                             break;
+
+
                         case R.id.chat:
                             fragment = new ChatFragment();
                             break;

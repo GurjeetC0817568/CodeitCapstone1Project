@@ -78,15 +78,11 @@ public class UserChatAdapter extends RecyclerView.Adapter<UserChatAdapter.ViewHo
 
                     if (messageSenderId.equals(messages.getTo().toString()))
                     {
-                        Log.d("hamza","sender: "+fromUserId.toString());
-                        Log.d("hamza","rec: "+messages.getTo().toString());
-
                         holder.senderMessageText.setVisibility(View.GONE);
                         holder.receiverMessageText.setVisibility(View.VISIBLE);
                         holder.receiverMessageText.setBackgroundResource(R.drawable.receiver_messages_layout);
                         holder.receiverMessageText.setTextColor(Color.BLACK);
                         holder.receiverMessageText.setText(messages.getMessage());
-
 
 
                     }
@@ -117,23 +113,7 @@ public class UserChatAdapter extends RecyclerView.Adapter<UserChatAdapter.ViewHo
 
 
     }
-//
-//    @Override
-//    public int getItemViewType(int position) {
-//        String Email=chatMessages.get(position).getMessageUser();
-//
-//
-// // current code
-//        if (Email.equals(userEmail))
-//        {
-//            return VIEW_SENDER;
-//        }
-//        else
-//        {
-//            return VIEW_REC;
-//        }
-//
-//    }
+
 
     @Override
     public int getItemCount() {

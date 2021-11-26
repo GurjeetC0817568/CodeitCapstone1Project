@@ -79,7 +79,6 @@ public class ChatFragment extends Fragment {
                 Log.e("queryText",query);
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 // search goes here !!
@@ -88,8 +87,6 @@ public class ChatFragment extends Fragment {
                 Log.e("queryText",newText);
                 return false;
             }
-
-
         });
         super.onCreateOptionsMenu(menu, inflater);
 

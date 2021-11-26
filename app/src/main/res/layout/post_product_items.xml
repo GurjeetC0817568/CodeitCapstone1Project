@@ -74,6 +74,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTime" />
 
+        <Button
+            android:id="@+id/btnContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="9dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:hint="Contact Seller"
+            android:textColorHint="@color/colorBlack"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Tvphone" />
+
         <TextView
 
             android:id="@+id/TvPrice"
@@ -99,6 +113,10 @@
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PostImage" />
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
