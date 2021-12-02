@@ -43,7 +43,7 @@ public class Message extends AppCompatActivity {
 
   //  EditText emojiconEditText;
     private String rec_name;
-    private String sen_name;
+    private String sen_name,contactName;
     ImageView emojiButton,submitButton;
     EmojIconActions emojIconActions;
     FirebaseAuth mAuth;

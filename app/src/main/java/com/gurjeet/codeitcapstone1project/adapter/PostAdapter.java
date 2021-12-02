@@ -76,15 +76,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
        holder.tvTime.setText("Posted On: "+L.getTimeAdd().toDate().toString());
        // holder.tvTime.setText("Testing it");
         holder.Tphone.setText(L.getDetails());
-
+        String id = L.getUserid();
 
         holder.btnContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 firebaseAuth  = FirebaseAuth.getInstance();
-                user = firebaseAuth.getCurrentUser();
+                 // FIXME: 26-11-2021 Here need to add seller id of this product not the current user
                Intent intent =  new Intent(context, ProductActivity.class);
-               intent.putExtra("userId",user.getUid());
+               intent.putExtra("userId",id);
+                intent.putExtra("prodSelected",L.getName());
                context.startActivity(intent);
 
             }

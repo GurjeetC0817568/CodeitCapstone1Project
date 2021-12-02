@@ -60,12 +60,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
                 final String ns = MO.getId();
                 String  username = MO.getName();
+                String  phone = MO.getPhone();
                 //Toast.makeText(context, ""+ns, Toast.LENGTH_SHORT).show();
                // Toast.makeText(context, "Username = "+username, Toast.LENGTH_LONG).show();
 
                 Intent intennt = new Intent(v.getContext(), Message.class);
                 intennt.putExtra("id",ns);
                 intennt.putExtra("title",username);
+                intennt.putExtra("phone",phone);
                 context.startActivity(intennt);
 
             }

@@ -10,6 +10,7 @@ public class UserRegister {
     //private String about;
     public UserRegister() {
     }
+
     public UserRegister(String id, String name, String email, String password, String phone, String address) {
         this.id = id;
         this.name = name;
