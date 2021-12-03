@@ -85,7 +85,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                  // FIXME: 26-11-2021 Here need to add seller id of this product not the current user
                Intent intent =  new Intent(context, ProductActivity.class);
                intent.putExtra("userId",id);
-                intent.putExtra("prodSelected",L.getName());
+                intent.putExtra("prodSelectedId",L.getPid());
                context.startActivity(intent);
 
             }

@@ -205,6 +205,7 @@ public class SellFragment extends Fragment {
                                             final PostModel mod = new PostModel();
                                             mod.setUserid(user.getUid());
                                             mod.setName(nam);
+                                            mod.setPid("p"+Timestamp.now().getSeconds());
                                             if (rbtnnew.isChecked()){
                                                 mod.setCondition(ne);
                                             }else{
@@ -255,7 +256,7 @@ public class SellFragment extends Fragment {
 
                     });
 
-                }
+                }else{ Toast.makeText(getActivity(), "Product photo and name is mandatory!", Toast.LENGTH_SHORT).show(); }
             }
         });
 

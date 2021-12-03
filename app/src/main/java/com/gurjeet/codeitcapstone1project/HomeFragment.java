@@ -137,7 +137,8 @@ public class HomeFragment extends Fragment {
 
     }
 
-    /*  //forgot why used and for which purpose tested it :(
+    /*
+    //forgot why used and for which purpose tested it :(
     private void getDataVersion2(){
         DocumentReference docRef = db.collection("data").document("1GWMbXz9ujEl3EDKydzO");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -145,13 +146,9 @@ public class HomeFragment extends Fragment {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d("tag", "DocumentSnapshot data: " + document.getData());
-                    } else {
-                        Log.d("tag", "No such document");
-                    }
-                } else {
-                    Log.d("tag", "get failed with ", task.getException());
+                    if (document.exists()) {Log.d("tag", "DocumentSnapshot data: " + document.getData());
+                    } else {Log.d("tag", "No such document");}
+                } else {Log.d("tag", "get failed with ", task.getException());
                 }
             }
         });
@@ -163,11 +160,9 @@ public class HomeFragment extends Fragment {
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             if (task.isSuccessful()) {
-
                                 PostModel types = document.toObject(PostModel.class);
                                 // Add all to your list
                                 postList.add(types);
@@ -178,7 +173,6 @@ public class HomeFragment extends Fragment {
                             }
                         }
                     }
-
                 });
     }
 

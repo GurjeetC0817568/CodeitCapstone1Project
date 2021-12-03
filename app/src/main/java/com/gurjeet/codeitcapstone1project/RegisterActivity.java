@@ -60,7 +60,6 @@ public class RegisterActivity extends AppCompatActivity {
         rRegister = findViewById(R.id.btnrregister);
 
         rLogin.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
@@ -120,9 +119,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 userobj.put("id", currentUserID);
                                 userobj.put("name", name);
                                 userobj.put("password", password);
-                                userobj.put("Email", email);
-                                userobj.put("Phone", phone);
-                                userobj.put("Address", address);
+                                userobj.put("email", email);
+                                userobj.put("phone", phone);
+                                userobj.put("address", address);
 
                                 //UserRegister mode = new UserRegister(id,name,email,password);
                                 FirebaseDatabase.getInstance().getReference("Register")

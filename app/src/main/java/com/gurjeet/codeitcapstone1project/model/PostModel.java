@@ -6,6 +6,7 @@ import com.google.firebase.Timestamp;
 
 
 public class PostModel{
+    private String pid;
     private String name;
     private String Userid;
     private String price;
@@ -17,7 +18,8 @@ public class PostModel{
 
     public PostModel() {}
 
-    public PostModel(String name,String Userid,String price,String details, String condition, String imageURi, Timestamp timeAdd) {
+    public PostModel(String pid,String name,String Userid,String price,String details, String condition, String imageURi, Timestamp timeAdd) {
+        this.pid = pid;
         this.name = name;
         this.condition = condition;
         this.imageURi = imageURi;
@@ -26,6 +28,15 @@ public class PostModel{
         this.details=details;
         this.Userid=Userid;
     }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
     public String getPrice() {
         return price;
     }
