@@ -60,7 +60,7 @@ public class ChatFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull final Menu menu, @NonNull MenuInflater inflater) {
-
+        //This part not using anymore
         inflater.inflate(R.menu.search,menu);
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
         searchView = (SearchView) menu.findItem(R.id.searchh)

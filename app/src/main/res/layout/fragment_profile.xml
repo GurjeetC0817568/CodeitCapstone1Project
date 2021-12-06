@@ -33,10 +33,24 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="190dp"
+        android:gravity="center_horizontal"
         android:text="Buy or Sell Anything And Connect with each other"
         android:textColor="#FF9800"
-        android:textSize="15sp"
-        android:layout_marginTop="190dp"
-        android:gravity="center_horizontal"/>
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="381dp"
+        android:backgroundTint="@color/colorBlack"
+        android:textColorHint="@color/colorPrimary"
+        android:gravity="center_horizontal"
+        android:hint="Log Out"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
 </FrameLayout>

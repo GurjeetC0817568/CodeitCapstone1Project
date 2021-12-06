@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView navigationView = findViewById(R.id.nav);
         navigationView.setOnItemSelectedListener(nav);
-      //TODO: either sell or profile part add here
         if (savedInstanceState == null) {
             navigationView.setSelectedItemId(R.id.profile);
             fragmentManager = getSupportFragmentManager();

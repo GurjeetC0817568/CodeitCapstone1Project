@@ -86,12 +86,7 @@ public class ProductActivity extends AppCompatActivity {
             }
         });*/
 
-        btnContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO: here will write code for move to chat page
-            }
-        });
+
     }
 
     public void getUser() {
@@ -122,17 +117,42 @@ public class ProductActivity extends AppCompatActivity {
                 if (snapshot.exists()){
                     for (DataSnapshot npsnapshot : snapshot.getChildren()) {
                         UserRegister u = npsnapshot.getValue(UserRegister.class);
-                        Log.d("result", "Name: " + u.getName()+" Email: "+ u.getEmail()+" Phone: "+ u.getPhone());
+
+
+
+                        Log.d("result", "Name: " + u.getName()+" Email: "+ u.getEmail()+" Id: "+ u.getId());
                         firebaseAuth = FirebaseAuth.getInstance();
                         user = firebaseAuth.getCurrentUser();
-                        userName.setText(user.getUid()+"-"+user.getDisplayName());
+                       // userName.setText(user.getUid()+"-"+user.getDisplayName());
 
-                        if(userId.equals(u.getId())){
-                            sellerName.setText("Name: "+u.getName()+"\nPhone: "+u.getPhone()+"\nEmail: "+u.getEmail()+"\nAddress: "+u.getAddress());
-                        }
+
                         if(userId.equals(user.getUid())) {
                             btnContact.setVisibility(View.GONE);btnPay.setVisibility(View.GONE);
-                        }else{btnContact.setVisibility(View.VISIBLE);btnPay.setVisibility(View.VISIBLE);}
+                            sellerName.setText("My Own Listing");
+                            userName.setText("");
+                        }else if(userId.equals(u.getId())){
+                            sellerName.setText("Name: "+u.getName()+"\nPhone: "+u.getPhone()+"\nEmail: "+u.getEmail()+"\nAddress: "+u.getAddress());
+                            final String ns = u.getId();
+                            final String  username = u.getName();
+                            final String  phone = u.getPhone();
+
+                            btnContact.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intennt = new Intent(v.getContext(), Message.class);
+                                    intennt.putExtra("id",ns);
+                                    intennt.putExtra("title",username);
+                                    intennt.putExtra("phone",phone);
+                                    startActivity(intennt);
+                                }
+                            });
+                            btnContact.setVisibility(View.VISIBLE);btnPay.setVisibility(View.VISIBLE);
+
+                        }
+
+
+
+
                     }
                 }
             }
