@@ -1,10 +1,13 @@
 package com.gurjeet.codeitcapstone1project;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
@@ -15,6 +18,9 @@ import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.math.BigDecimal;
 
 public class PayPalActivity extends AppCompatActivity {
@@ -24,7 +30,7 @@ public class PayPalActivity extends AppCompatActivity {
     Intent mservices;
     int mpaypalrequestcode=999;
 
-    AutoCompleteTextView txtName,txtAge,txtAddress,txtDate,txtPhone,txtEmail,txtMedCond;
+    AutoCompleteTextView txtName,txtAddress,txtPhone,txtEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +62,8 @@ public class PayPalActivity extends AppCompatActivity {
         Intent intent=new Intent(this,PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,payPalConfiguration);
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payment);
-        startActivityForResult(intent,mpaypalrequestcode);
+        startActivityForResult(intent,mpaypalrequestcode);//fixme:runtime error paypal connection
+       // paymentIntentLauncher.launch(intent);  //if enable this then uncomment below related functions
 
 
         //Intent intent = new Intent(this, PayPalService.class);
@@ -69,6 +76,35 @@ public class PayPalActivity extends AppCompatActivity {
         txtEmail.setText("");
 
     }
+
+
+   /* ActivityResultLauncher<Intent> paymentIntentLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    Log.e("PayPalActivity", "onActivityResult: success");
+                    assert result.getData() != null;
+                    processPayment(result.getData());
+                } else {
+                    Log.e("PayPalActivity", "onActivityResult: failed");
+                }
+            }
+    );
+    private void processPayment(Intent data) {
+        PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+        if (confirmation != null){
+            try {
+                String paymentDetails = confirmation.toJSONObject().toString(4);
+                JSONObject payObj = new JSONObject(paymentDetails);
+                String payID = payObj.getJSONObject("response").getString("id");
+                String state = payObj.getJSONObject("response").getString("state");
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Log.e("PayPalPaymentError", "an extremely unlikely failure occurred: ", e);
+            }
+        }
+    }
+*/
 
     protected void onActivityResult(int requestCode,int resultCode, Intent data)
     {
