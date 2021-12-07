@@ -76,15 +76,11 @@ public class ProductActivity extends AppCompatActivity {
         productDetails = findViewById(R.id.productDetails);
         btnPay = findViewById(R.id.btnPay);
         btnContact = findViewById(R.id.btnContact);
-        getUser();
         getProduct();
+        getUser();
 
-       /* btnPay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO: here will write paypal code
-            }
-        });*/
+
+
 
 
     }
@@ -148,6 +144,7 @@ public class ProductActivity extends AppCompatActivity {
                             });
                             btnContact.setVisibility(View.VISIBLE);btnPay.setVisibility(View.VISIBLE);
 
+
                         }
 
 
@@ -191,6 +188,15 @@ public class ProductActivity extends AppCompatActivity {
                                             .apply(options)
                                             .into(productImage);
 
+
+                                    btnPay.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent PaymentLinkIntent = new Intent(ProductActivity.this, PayPalActivity.class);
+                                            PaymentLinkIntent.putExtra("price",p.getPrice());
+                                            ProductActivity.this.startActivity(PaymentLinkIntent);
+                                        }
+                                    });
 
                                 }
                             } else {

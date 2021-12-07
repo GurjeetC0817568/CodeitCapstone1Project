@@ -19,3 +19,13 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# below are my trial codes
+#-keepclassmembers class * implements javax.net.ssl.SSLSocketFactory {
+#    private javax.net.ssl.SSLSocketFactory delegate;
+#}
+
+
+-keepclassmembers class * extends com.actionbarsherlock.ActionBarSherlock {
+    <init>(android.app.Activity, int);
+}
