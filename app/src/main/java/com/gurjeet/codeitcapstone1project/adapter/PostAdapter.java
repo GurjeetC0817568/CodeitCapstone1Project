@@ -68,28 +68,28 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final PostModel L = postList.get(position);
-        String imageUrl;
-        holder.tvname.setText(L.getName());
-        holder.TPrice.setText("Price: $"+L.getPrice());
-        //holder.Tphone.setText(L.getNumber());
-        holder.tvCondition.setText("Condition: "+L.getCondition());
-       holder.tvTime.setText("Posted On: "+L.getTimeAdd().toDate().toString());
-       // holder.tvTime.setText("Testing it");
-        holder.Tphone.setText(L.getDetails());
-        String id = L.getUserid();
 
-        holder.btnContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firebaseAuth  = FirebaseAuth.getInstance();
-                 // FIXME: 26-11-2021 Here need to add seller id of this product not the current user
-               Intent intent =  new Intent(context, ProductActivity.class);
-               intent.putExtra("userId",id);
-                intent.putExtra("prodSelectedId",L.getPid());
-               context.startActivity(intent);
 
-            }
-        });
+            String imageUrl;
+            holder.tvname.setText(L.getName());
+            holder.TPrice.setText("Price: $" + L.getPrice());
+            //holder.Tphone.setText(L.getNumber());
+            holder.tvCondition.setText("Condition: " + L.getCondition());
+            holder.tvTime.setText("Posted On: " + L.getTimeAdd().toDate().toString());
+            //holder.Tphone.setText(L.getDetails());
+            String id = L.getUserid();
+
+            holder.btnContact.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    firebaseAuth = FirebaseAuth.getInstance();
+                    Intent intent = new Intent(context, ProductActivity.class);
+                    intent.putExtra("userId", id);
+                    intent.putExtra("prodSelectedId", L.getPid());
+                    context.startActivity(intent);
+
+                }
+            });
 
 
 
@@ -119,26 +119,29 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             }
         });*/
 
-        imageUrl= L.getImageURi();
+            imageUrl = L.getImageURi();
 //        Picasso.get()
 //
 //                .load(imageUrl)
 //                .placeholder(R.drawable.sale)
 //                .fit()
 //                .into(holder.PostImage);
-        RequestOptions options = new RequestOptions();
-        int corner_size = 40;
-        options.placeholder(R.drawable.ic_launcher_background)
-                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                .error(R.drawable.ic_launcher_foreground)
-                .transform(new CenterCrop())
-                .transform(new RoundedCorners(corner_size));
+            RequestOptions options = new RequestOptions();
+            int corner_size = 40;
+            options.placeholder(R.drawable.ic_launcher_background)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                    .error(R.drawable.ic_launcher_foreground)
+                    .transform(new CenterCrop())
+                    .transform(new RoundedCorners(corner_size));
 
-        Glide.with(context).load(imageUrl)
-                .apply(options)
-                .into(holder.PostImage);
+            Glide.with(context).load(imageUrl)
+                    .apply(options)
+                    .into(holder.PostImage);
 //        final Transformation transformation = new RoundedCornersTransformation(50, 5);
 //        Picasso.get().load(imageUrl).transform(transformation).into(holder.PostImage);
+
+
+
     }
 
     private boolean appInstalledOrNot(String s) {

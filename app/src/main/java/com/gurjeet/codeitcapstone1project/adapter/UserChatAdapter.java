@@ -78,7 +78,7 @@ public class UserChatAdapter extends RecyclerView.Adapter<UserChatAdapter.ViewHo
 
                     if (messageSenderId.equals(messages.getTo().toString()))
                     {
-                        holder.senderMessageText.setVisibility(View.GONE);
+                        holder.senderMessageText.setVisibility(View.GONE);holder.imageView2.setVisibility(View.GONE);
                         holder.receiverMessageText.setVisibility(View.VISIBLE);
                         holder.receiverMessageText.setBackgroundResource(R.drawable.receiver_messages_layout);
                         holder.receiverMessageText.setTextColor(Color.BLACK);
@@ -88,7 +88,7 @@ public class UserChatAdapter extends RecyclerView.Adapter<UserChatAdapter.ViewHo
                     }
                     else
                     {
-                        holder.receiverMessageText.setVisibility(View.GONE);
+                        holder.receiverMessageText.setVisibility(View.GONE);holder.imageView.setVisibility(View.GONE);
                         holder.senderMessageText.setVisibility(View.VISIBLE);
                         holder.senderMessageText.setBackgroundResource(R.drawable.sender_messages_layout);
                         holder.senderMessageText.setTextColor(Color.BLACK);
@@ -125,12 +125,14 @@ public class UserChatAdapter extends RecyclerView.Adapter<UserChatAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView receiverMessageText;
         public TextView senderMessageText;
-        ImageView imageView;
+        ImageView imageView,imageView2;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             senderMessageText = (TextView)itemView.findViewById(R.id.sender_message_text);
             receiverMessageText = (TextView)itemView.findViewById(R.id.receiver_message_text);
             imageView = itemView.findViewById(R.id.message_profile_image);
+            imageView2 = itemView.findViewById(R.id.message_profile_image2);
+
         }
     }
 }

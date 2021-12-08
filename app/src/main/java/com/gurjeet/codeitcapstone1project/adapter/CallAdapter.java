@@ -47,8 +47,9 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.CallAdapterVie
             public void onClick(View v) {
                 UserRegister ur = list.get(position);
                 String  username = ur.getName();
+                String phone = ur.getPhone();
                 Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                callIntent.setData(Uri.parse("tel:+91987654321"));
+                callIntent.setData(Uri.parse("tel: "+phone));
                 context.startActivity(callIntent);
                 //Intent i=new Intent(Intent.ACTION_DIAL,Uri.parse(phno));
                 //context.startActivity(i);

@@ -18,16 +18,16 @@
         android:layout_height="match_parent"
         android:background="#0C0C0C"
         android:orientation="vertical"
-        android:padding="9dp"
+        android:padding="6dp"
 
         >
 
         <ImageView
             android:id="@+id/PostImage"
-            android:layout_width="130dp"
-            android:layout_height="115dp"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="9dp"
+            android:layout_width="111dp"
+            android:layout_height="95dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
             android:adjustViewBounds="true"
             android:cropToPadding="true"
             android:scaleType="fitXY"
@@ -54,14 +54,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:hint="@string/condition"
-            android:padding="3dp"
+            android:padding="2dp"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/tvname"
             app:layout_constraintTop_toBottomOf="@+id/tvname" />
 
-        <TextView
-
+      <!--  <TextView
             android:id="@+id/Tvphone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,21 +71,21 @@
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTime" />
+            app:layout_constraintTop_toBottomOf="@+id/tvTime" />-->
 
         <Button
             android:id="@+id/btnContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="1dp"
             android:layout_marginEnd="9dp"
             android:backgroundTint="@color/colorPrimary"
-            android:hint="Contact Seller"
+            android:hint="See More"
             android:textColorHint="@color/colorBlack"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Tvphone" />
+            app:layout_constraintTop_toBottomOf="@+id/tvTime" />
 
         <TextView
 
@@ -106,9 +105,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
-            android:layout_marginTop="9dp"
+            android:layout_marginTop="2dp"
             android:hint="@string/time"
-            android:padding="3dp"
+            android:padding="1dp"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"

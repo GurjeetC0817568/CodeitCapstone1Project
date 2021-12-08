@@ -194,6 +194,9 @@ public class ProductActivity extends AppCompatActivity {
                                         public void onClick(View v) {
                                             Intent PaymentLinkIntent = new Intent(ProductActivity.this, PayPalActivity.class);
                                             PaymentLinkIntent.putExtra("price",p.getPrice());
+                                            PaymentLinkIntent.putExtra("pname",p.getName());
+                                            PaymentLinkIntent.putExtra("pdetails",p.getDetails());
+                                            PaymentLinkIntent.putExtra("pid",p.getPid());
                                             ProductActivity.this.startActivity(PaymentLinkIntent);
                                         }
                                     });

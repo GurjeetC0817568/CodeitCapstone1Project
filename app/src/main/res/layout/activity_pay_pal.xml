@@ -28,67 +28,70 @@
             android:background="@drawable/paytop"
             android:layout_marginBottom="36dp"/>
 
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_horizontal"
+            android:text="Review your purchase and pay via paypal!"
+            android:textColor="#FF9800"
+            android:textSize="16sp" />
 
         <AutoCompleteTextView
             android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_margin="3dp"
+            android:gravity="center"
             android:hint="Name"
-            android:inputType="textEmailAddress"
+            android:textSize="16sp"
             android:maxLines="1"
+            android:padding="3dp"
+            android:background="#B2101210"
             android:singleLine="true"
-            android:textColorHint="@color/colorPrimary"
-            android:textColor="@color/colorPrimaryDark"/>
-
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary" />
         <AutoCompleteTextView
-            android:id="@+id/txtAddress"
+            android:id="@+id/txtDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:hint="Address"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
+            android:layout_margin="3dp"
+            android:gravity="center"
+            android:hint="Details"
+            android:textSize="16sp"
+            android:padding="3dp"
+            android:background="#B2101210"
             android:singleLine="true"
-            android:textColorHint="@color/colorPrimary"
-            android:textColor="@color/colorPrimaryDark" />
-
-
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary" />
         <AutoCompleteTextView
-            android:id="@+id/txtPhone"
+            android:id="@+id/txtPrice"
+            android:padding="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:hint="Phone"
+            android:layout_margin="3dp"
+            android:duplicateParentState="false"
+            android:hint="Price"
+            android:textSize="16sp"
+            android:background="#B2101210"
+            android:gravity="center"
             android:maxLines="1"
             android:singleLine="true"
-            android:textColorHint="@color/colorPrimary"
-            android:textColor="@color/colorPrimaryDark" />
-
-        <AutoCompleteTextView
-            android:id="@+id/txtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColorHint="@color/colorPrimary"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary" />
 
 
         <Button
             android:id="@+id/pay"
             style="?android:textAppearanceSmall"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:layout_marginTop="16dp"
+            android:backgroundTint="@color/colorBlack"
             android:onClick="pay"
             android:text="Pay Now"
-            android:backgroundTint="@color/colorBlack"
             android:textColor="@color/colorPrimary"
             android:textStyle="bold" />
 

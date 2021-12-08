@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -43,7 +44,8 @@ public class Message extends AppCompatActivity {
 
   //  EditText emojiconEditText;
     private String rec_name;
-    private String sen_name,contactName;
+    private String sen_name;
+    TextView contactName;
     ImageView emojiButton,submitButton;
     EmojIconActions emojIconActions;
     FirebaseAuth mAuth;
@@ -70,9 +72,10 @@ public class Message extends AppCompatActivity {
        // ((AppCompatActivity)Message.this).getSupportActionBar().setTitle(title);//need to work for this
 
         v = findViewById(R.id.message_activity);//(RelativeLayout)findViewById(R.id.message_activity);
+        contactName = findViewById(R.id.contactName);
+        contactName.setText(title);
         listOfMessage = (RecyclerView) findViewById(R.id.list_of_message);
         layoutManager = new LinearLayoutManager(this);
-        listOfMessage.setHasFixedSize(true);
         listOfMessage.setLayoutManager(layoutManager);
         emojiButton = (ImageView)findViewById(R.id.emoji_button);
         submitButton = (ImageView)findViewById(R.id.submit_button);
@@ -130,7 +133,7 @@ public class Message extends AppCompatActivity {
                     if (task.isSuccessful())
                     {
 
-                        Toast.makeText(Message.this, "message send successfully...", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(Message.this, "message send successfully...", Toast.LENGTH_SHORT).show();
                     }
                     else
                     {

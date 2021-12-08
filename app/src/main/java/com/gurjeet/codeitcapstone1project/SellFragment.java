@@ -223,6 +223,7 @@ public class SellFragment extends Fragment {
                                             }
                                             mod.setImageURi(imageUri);
                                             mod.setTimeAdd(new Timestamp(new Date()));
+                                            mod.setPaymentdone("");
                                             collectionReference.add(mod).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                                 @Override
                                                 public void onSuccess(DocumentReference documentReference) {

@@ -4,27 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Welcome"
-        android:textColor="#FF9800"
-        android:textSize="40sp"
-        android:layout_marginTop="90dp"
-        android:gravity="center_horizontal"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Rando Connection"
-        android:textColor="#FF9800"
-        android:textSize="27sp"
-        android:layout_marginTop="150dp"
-        android:gravity="center_horizontal"/>
-
     <ImageView
         android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/loginheading" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="145dp"
+        android:gravity="center_horizontal"
+        android:text="Welcome"
+        android:textColor="@color/colorPrimary"
+        android:textSize="27sp" />
+
+    <TextView
+        android:id="@+id/detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="185dp"
+        android:gravity="center_horizontal"
+        android:text="Rando Connection"
+        android:textColor="@color/colorPrimary"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="230dp"
@@ -34,7 +41,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="110dp"
         android:gravity="center_horizontal"
         android:text="Buy or Sell Anything And Connect with each other"
         android:textColor="#FF9800"

@@ -14,11 +14,12 @@ public class PostModel{
     private String condition;
     private String imageURi;
     private Timestamp timeAdd;
+    private String paymentdone;
     private static PostModel instance;
 
     public PostModel() {}
 
-    public PostModel(String pid,String name,String Userid,String price,String details, String condition, String imageURi, Timestamp timeAdd) {
+    public PostModel(String pid,String name,String Userid,String price,String details, String condition, String imageURi, Timestamp timeAdd, String paymentdone) {
         this.pid = pid;
         this.name = name;
         this.condition = condition;
@@ -27,6 +28,7 @@ public class PostModel{
         this.price =price;
         this.details=details;
         this.Userid=Userid;
+        this.paymentdone=paymentdone;
     }
 
     public String getPid() {
@@ -93,5 +95,11 @@ public class PostModel{
         this.timeAdd = timeAdd;
     }
 
+    public String getPaymentdone() {
+        return paymentdone;
+    }
 
+    public void setPaymentdone(String paymentdone) {
+        this.paymentdone = paymentdone;
+    }
 }

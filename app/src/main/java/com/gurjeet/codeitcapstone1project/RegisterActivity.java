@@ -129,7 +129,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                 .getInstance().getCurrentUser().getUid()).updateChildren(userobj).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(RegisterActivity.this, "Data save to firebase", Toast.LENGTH_SHORT).show();
+                                       // Toast.makeText(RegisterActivity.this, "Data save to firebase", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                                 //databaseReference.child("Register").child(currentUserID).setValue("");

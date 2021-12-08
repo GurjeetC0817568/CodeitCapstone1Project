@@ -165,8 +165,10 @@ public class HomeFragment extends Fragment {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             if (task.isSuccessful()) {
                                 PostModel types = document.toObject(PostModel.class);
-                                // Add all to your list
-                                postList.add(types);
+                                // Add all products except which are sold
+                                if(!types.getPaymentdone().equals("done")) {
+                                    postList.add(types);
+                                }
                                 setAdapter();
                                 Log.d("tag", document.getId() + " => " + document.getData());
                             } else {
@@ -175,6 +177,10 @@ public class HomeFragment extends Fragment {
                         }
                     }
                 });
+
+
+
+
     }
 
 

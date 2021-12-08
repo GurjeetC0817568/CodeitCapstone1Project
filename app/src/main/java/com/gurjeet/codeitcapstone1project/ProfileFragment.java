@@ -6,17 +6,28 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.gurjeet.codeitcapstone1project.adapter.UserAdapter;
+import com.gurjeet.codeitcapstone1project.model.UserRegister;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,6 +48,7 @@ public class ProfileFragment extends Fragment {
     FirebaseUser user;
     DatabaseReference reference;
     Button btnLogout;
+    TextView welcome,detail;
     //UserAdapter adapter;  //TODO: add useradapter class
     final DatabaseReference nm= FirebaseDatabase.getInstance().getReference("Register");
 
@@ -69,6 +81,7 @@ public class ProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
         firebaseAuth  = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
+        getuser();
     }
 
     @Override
@@ -86,7 +99,8 @@ public class ProfileFragment extends Fragment {
         getuser();
         return view;*/
         btnLogout = view.findViewById(R.id.btnLogout);
-
+        welcome = view.findViewById(R.id.welcome);
+        detail = view.findViewById(R.id.detail);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,8 +123,32 @@ public class ProfileFragment extends Fragment {
          }
     }
 
-  /*  private void getuser() {
-    //TODO: need to use DataSnapshot code with onDataChange and fetch user using adapter and userRegister model
+    private void getuser() {
+        nm.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    for (DataSnapshot npsnapshot : snapshot.getChildren()) {
+                        UserRegister l = npsnapshot.getValue(UserRegister.class);
+                        String name = l.getName();
+                        Log.d("nam", "onDataChange: "+name);
+                        if(user.getUid().equals(l.getId())){
+                            welcome.setText("Welcome " + l.getName());
+                            detail.setText(l.getEmail()+"\n"+l.getPhone());
+                        }
+                    }
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(), "Error"+error.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
-   */
+
+
+
+
+
 }

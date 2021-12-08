@@ -2,6 +2,7 @@ package com.gurjeet.codeitcapstone1project;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -12,6 +13,15 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.StorageReference;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -26,11 +36,14 @@ import java.math.BigDecimal;
 public class PayPalActivity extends AppCompatActivity {
 //https://www.appinvoice.com/en/s/documentation/how-to-get-paypal-client-id-and-secret-key-22
     PayPalConfiguration payPalConfiguration;
-    String paypalclientid="AUyZ7wL252EkWECf6GEQ5cVvpYgyRmLU-tMugM_FDvM0zO3Yw7cmlpgTxTutYF_VCPybiihjSGLKzZSu";
+    String paypalclientid="AZqeLqaD_RSBujv4VTo51SnZcRVcRCe4WbsQDddwy_a-ifdH5ZJVwqOrjG5g2TxqWWEz_e6LkoHz5F_o";//""AUyZ7wL252EkWECf6GEQ5cVvpYgyRmLU-tMugM_FDvM0zO3Yw7cmlpgTxTutYF_VCPybiihjSGLKzZSu";
     Intent mservices;
     int mpaypalrequestcode=999;
 
-    AutoCompleteTextView txtName,txtAddress,txtPhone,txtEmail;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private StorageReference storageReference;
+
+    AutoCompleteTextView txtName,txtPrice,txtDetails,txtEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +60,27 @@ public class PayPalActivity extends AppCompatActivity {
 
 
         txtName=(AutoCompleteTextView) findViewById(R.id.txtName);
-        txtAddress=(AutoCompleteTextView) findViewById(R.id.txtAddress);
-        txtPhone=(AutoCompleteTextView) findViewById(R.id.txtPhone);
-        txtEmail=(AutoCompleteTextView) findViewById(R.id.txtEmail);
+        txtPrice=(AutoCompleteTextView) findViewById(R.id.txtPrice);
+        txtDetails=(AutoCompleteTextView) findViewById(R.id.txtDetails);
+       // txtEmail=(AutoCompleteTextView) findViewById(R.id.txtEmail);
+
+        Intent i = getIntent();
+        String price = i.getExtras().getString("price");
+        String pname =i.getExtras().getString("pname");
+        String pdetails =i.getExtras().getString("pdetails");
+
+        txtName.setText(pname);
+        txtPrice.setText("Price: $"+price);
+        txtDetails.setText(pdetails);
+        // txtEmail.setText("");
     }
 
-    void pay(View view)
+    public void pay(View view)
     {
-       // Intent i = getIntent();
-       // String price =i.getExtras().getString("price");
+        Intent i = getIntent();
+        String price =i.getExtras().getString("price");
 
-        PayPalPayment payment=new PayPalPayment(new BigDecimal(10),"CAD","Test Payment with Paypal",PayPalPayment.PAYMENT_INTENT_SALE);
+        PayPalPayment payment=new PayPalPayment(new BigDecimal(price),"USD","Test Payment with Paypal",PayPalPayment.PAYMENT_INTENT_SALE);
 
         Intent intent=new Intent(this,PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,payPalConfiguration);
@@ -70,10 +93,7 @@ public class PayPalActivity extends AppCompatActivity {
        // intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
         //startService(intent);
 
-        txtName.setText("");
-        txtAddress.setText("");
-        txtPhone.setText("");
-        txtEmail.setText("");
+
 
     }
 
@@ -115,7 +135,7 @@ public class PayPalActivity extends AppCompatActivity {
             if(resultCode == Activity.RESULT_OK)
             {
                 PaymentConfirmation confirmation=data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-                Toast.makeText(this,"Payment Approved",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Payment Approved...",Toast.LENGTH_SHORT).show();
 
                 if(confirmation!=null)
                 {
@@ -123,7 +143,17 @@ public class PayPalActivity extends AppCompatActivity {
 
                     if(state.equals("approved"))
                     {
-                        Toast.makeText(this,"Payment Approved",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,"Payment Done",Toast.LENGTH_LONG).show();
+
+                        Intent i = getIntent();
+                        String productId =i.getExtras().getString("pid");//remove this id from listing now because its sold
+                        UpdateSoldProduct(productId);
+                        //after payment done, goback to main activity
+                        Intent in = new Intent(PayPalActivity.this, MainActivity.class);
+                        in.putExtra("productIdSold",productId);
+                        PayPalActivity.this.startActivity(in);
+
+
                     }else
                     {
                         Toast.makeText(this,"Error in the payment",Toast.LENGTH_SHORT).show();
@@ -131,7 +161,36 @@ public class PayPalActivity extends AppCompatActivity {
                 }else
                     Toast.makeText(this,"Confirmation is null",Toast.LENGTH_SHORT).show();
 
-            }
+            }else{Toast.makeText(this,"Payment Not OK",Toast.LENGTH_SHORT).show();}
         }
     }
+
+
+    public void UpdateSoldProduct(String productId){
+               db.collection("data")
+                  .whereEqualTo("pid", productId)
+                  .get()
+                  .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                      @Override
+                      public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                          if (task.isSuccessful()) {
+                              for (QueryDocumentSnapshot document : task.getResult()) {
+                                 // Log.d("GK1- DocumentID", document.getId() + " => " + document.getData());
+                                  DocumentReference contact = db.collection("data").document(document.getId());
+                                  contact.update("paymentdone", "done")
+                                          .addOnSuccessListener(new OnSuccessListener< Void >() {
+                                              @Override
+                                              public void onSuccess(Void aVoid) {
+                                                  // Toast.makeText(this, "Updated Successfully",Toast.LENGTH_SHORT).show();
+                                              }
+                                          });
+                              }
+                          } else {
+                             // Log.d("GK2", "Error getting documents: ", task.getException());
+                          }
+                      }
+                  });
+    }
+
+
 }
