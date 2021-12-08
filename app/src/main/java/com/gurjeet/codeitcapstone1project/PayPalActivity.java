@@ -62,7 +62,6 @@ public class PayPalActivity extends AppCompatActivity {
         txtName=(AutoCompleteTextView) findViewById(R.id.txtName);
         txtPrice=(AutoCompleteTextView) findViewById(R.id.txtPrice);
         txtDetails=(AutoCompleteTextView) findViewById(R.id.txtDetails);
-       // txtEmail=(AutoCompleteTextView) findViewById(R.id.txtEmail);
 
         Intent i = getIntent();
         String price = i.getExtras().getString("price");
@@ -85,20 +84,13 @@ public class PayPalActivity extends AppCompatActivity {
         Intent intent=new Intent(this,PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,payPalConfiguration);
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payment);
-        startActivityForResult(intent,mpaypalrequestcode);//fixme:runtime error paypal connection
-       // paymentIntentLauncher.launch(intent);  //if enable this then uncomment below related functions
-
-
-        //Intent intent = new Intent(this, PayPalService.class);
-       // intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
-        //startService(intent);
-
-
-
+        startActivityForResult(intent,mpaypalrequestcode);
+       // paymentIntentLauncher.launch(intent);  //Working code - if enable this then uncomment below related functions
     }
 
 
-   /* ActivityResultLauncher<Intent> paymentIntentLauncher = registerForActivityResult(
+   /* // This code is also working if uncomment line number 89 but lastly used line no. 88 only
+   ActivityResultLauncher<Intent> paymentIntentLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK) {
@@ -150,7 +142,7 @@ public class PayPalActivity extends AppCompatActivity {
                         UpdateSoldProduct(productId);
                         //after payment done, goback to main activity
                         Intent in = new Intent(PayPalActivity.this, MainActivity.class);
-                        in.putExtra("productIdSold",productId);
+                        in.putExtra("productIdSold",productId);//send product id back to make them sold and not show in list
                         PayPalActivity.this.startActivity(in);
 
 
@@ -166,6 +158,7 @@ public class PayPalActivity extends AppCompatActivity {
     }
 
 
+    // if buyer paid for product then making it "sold" and not listing anymore
     public void UpdateSoldProduct(String productId){
                db.collection("data")
                   .whereEqualTo("pid", productId)

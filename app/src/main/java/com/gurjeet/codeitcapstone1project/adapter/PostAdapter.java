@@ -79,6 +79,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             //holder.Tphone.setText(L.getDetails());
             String id = L.getUserid();
 
+            //Goto product activity where showing contact details and full product details
             holder.btnContact.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -95,7 +96,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
 
    /*
-    //TODO: will enable it later
+    //TODO: will enable it later : Working paart but no need to add here
     holder.Tphone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +106,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 //                context.startActivity(callIntent);
                 //   openWhatsap(L.getNumber());
                 // this click leads from click number to whatsapp
-                //TODO: will check it later
                 boolean installed = appInstalledOrNot("com.whatsapp");
                 if (installed){
                     Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -120,12 +120,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         });*/
 
             imageUrl = L.getImageURi();
-//        Picasso.get()
-//
-//                .load(imageUrl)
-//                .placeholder(R.drawable.sale)
-//                .fit()
-//                .into(holder.PostImage);
             RequestOptions options = new RequestOptions();
             int corner_size = 40;
             options.placeholder(R.drawable.ic_launcher_background)
@@ -137,9 +131,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             Glide.with(context).load(imageUrl)
                     .apply(options)
                     .into(holder.PostImage);
-//        final Transformation transformation = new RoundedCornersTransformation(50, 5);
-//        Picasso.get().load(imageUrl).transform(transformation).into(holder.PostImage);
-
 
 
     }
@@ -160,6 +151,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     }
 
+    // Working function but removed from this page
     private void openWhatsap(String number) {
         try {
             // number = number.replace(" ", "").replace("+", "");
@@ -198,16 +190,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             TPrice =itemView.findViewById(R.id.TvPrice);
             btnContact =itemView.findViewById(R.id.btnContact);
         }
-//      public ViewHolder(@NonNull View itemView,Context ctx) {
-//            super(itemView);
-//            context =ctx;
-//            PostImage = itemView.findViewById(R.id.PostImage);
-//                tvname = itemView.findViewById(R.id.tvname);
-//            tvCondition = itemView.findViewById(R.id.tvCondition);
-//            tvTime = itemView.findViewById(R.id.tvTime);
-//            cardView = itemView.findViewById(R.id.Crview);
-//
-//      }
+
 
 }
 }

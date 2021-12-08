@@ -15,7 +15,7 @@
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/activity_message.xml" value="0.2" />
-        <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/activity_pay_pal.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/activity_pay_pal.xml" value="0.72" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/activity_product.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/layout/addnumberlayout.xml" value="0.15364583333333334" />
@@ -36,6 +36,7 @@
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/menu/bottombarmenu.xml" value="0.13020833333333334" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/menu/logout.xml" value="0.13020833333333334" />
         <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/menu/search.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidStudioProjects/capstone/CodeitCapstone1Project/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2703125" />
         <entry key="..\:/Users/jiveshmakkar007/AndroidStudioProjects/CodeitCapstone1Project/app/src/main/res/layout/message_recieve_row.xml" value="0.11548913043478261" />
         <entry key="..\:/Users/jiveshmakkar007/AndroidStudioProjects/CodeitCapstone1Project/app/src/main/res/layout/message_send_row.xml" value="0.2384428223844282" />
         <entry key="..\:/Users/jiveshmakkar007/AndroidStudioProjects/CodeitCapstone1Project/app/src/main/res/layout/row_user.xml" value="0.11548913043478261" />

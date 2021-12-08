@@ -39,7 +39,7 @@ import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
 
 
 public class Message extends AppCompatActivity {
-    View v;//RelativeLayout activity_message;//View V
+    View v;   //RelativeLayout activity_message;//View V
    EmojiconEditText emojiconEditText;
 
   //  EditText emojiconEditText;
@@ -69,7 +69,6 @@ public class Message extends AppCompatActivity {
         sen_name = mAuth.getCurrentUser().getUid();
         rec_name =intent.getExtras().getString("id");
         String title =intent.getExtras().getString("title");
-       // ((AppCompatActivity)Message.this).getSupportActionBar().setTitle(title);//need to work for this
 
         v = findViewById(R.id.message_activity);//(RelativeLayout)findViewById(R.id.message_activity);
         contactName = findViewById(R.id.contactName);
@@ -102,8 +101,6 @@ public class Message extends AppCompatActivity {
 
     private void sendmessage() {
         String tex = emojiconEditText.getText().toString();
-
-
         if (TextUtils.isEmpty(tex))
         {
             Toast.makeText(this, "first write your message", Toast.LENGTH_SHORT).show();
@@ -190,12 +187,7 @@ public class Message extends AppCompatActivity {
     }
 
 
-    private void showallmessages() {
-        // loggedInUserName = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private void showallmessages() { // this part not needed now
         String userEmail=mAuth.getCurrentUser().getEmail();
-        // Log.d("Main", "user id: " + loggedInUserName);
-        //userSpecificAdapter = new userSpecificAdapter(this, ChatMessage.class, R.layout.item_in_message,
-        //      FirebaseDatabase.getInstance().getReference());
-        //  userSpecificAdapter adapter=new userSpecificAdapter(messagesFromDB,userEmail,Message.this);
     }
 }

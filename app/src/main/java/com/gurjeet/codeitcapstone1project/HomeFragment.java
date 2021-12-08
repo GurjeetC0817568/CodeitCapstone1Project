@@ -66,8 +66,7 @@ public class HomeFragment extends Fragment {
     private CollectionReference collectionReference = db.collection("data");
     private Uri imageUri;
     private String ARG_SECTION_NUMBER;
-//    View view;
-    //  Toolbar toolbar;
+
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
@@ -107,18 +106,13 @@ public class HomeFragment extends Fragment {
         setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.fragment_home,container,false);
         recyclerView = view.findViewById(R.id.postRecycler);
-        //       toolbar.setTitle("Home");
-        //     recyclerView.setHasFixedSize(true);
         postList = new ArrayList<>();
-        //  postAdapter = new PostAdapter(getActivity(),postList);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        //  recyclerView.setAdapter(postAdapter);
         firebaseAuth  = FirebaseAuth.getInstance();
 
         user = firebaseAuth.getCurrentUser();
-//           postList  = new ArrayList<>();
-        //getData();
-        getDataversion3();
+
+        getData();
         setAdapter();
         return view;
     }
@@ -138,24 +132,8 @@ public class HomeFragment extends Fragment {
 
     }
 
-    /*
-    //forgot why used and for which purpose tested it :(
-    private void getDataVersion2(){
-        DocumentReference docRef = db.collection("data").document("1GWMbXz9ujEl3EDKydzO");
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {Log.d("tag", "DocumentSnapshot data: " + document.getData());
-                    } else {Log.d("tag", "No such document");}
-                } else {Log.d("tag", "get failed with ", task.getException());
-                }
-            }
-        });
-    }*/
 
-    private void getDataversion3(){
+    private void getData(){
         //to get data from firebase collection to recycler view .
         db.collection("data")
                 .get()
@@ -166,7 +144,7 @@ public class HomeFragment extends Fragment {
                             if (task.isSuccessful()) {
                                 PostModel types = document.toObject(PostModel.class);
                                 // Add all products except which are sold
-                                if(!types.getPaymentdone().equals("done")) {
+                                if(!types.getPaymentdone().equals("done")) { // checking product sold or not via paypal
                                     postList.add(types);
                                 }
                                 setAdapter();
@@ -178,42 +156,9 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
-
-
-
     }
 
 
-    private void getData(){
-        PostModel M = new PostModel();
-        collectionReference.whereEqualTo("data",
-                M.getName()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                if (queryDocumentSnapshots.isEmpty()){
-
-                    for (QueryDocumentSnapshot data :queryDocumentSnapshots){
-
-                        Toast.makeText(getActivity(), "data  " + data.toString(), Toast.LENGTH_SHORT).show();
-                        Log.d("TAG", "onSuccess: " + data.toString());
-//                             PostModel  nam = data.toObject(PostModel.class);
-//                             postList.add(nam);
-                        List<PostModel> types = (List<PostModel>) data.toObject(PostModel.class);
-                        // Add all to your list
-                        postList.addAll(types);
-                        Log.d("TAG", "onSuccess: " + types);
-                        setAdapter();
-                    }
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "error" +e.toString(), Toast.LENGTH_LONG).show();
-                Log.d("HomeError",e.toString());
-            }
-        });
-    }
 
     private void setAdapter(){
         PostAdapter myadapter = new PostAdapter(getActivity(),postList);
